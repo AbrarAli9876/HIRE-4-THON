@@ -1,8 +1,10 @@
-# HACK Workspace
+# HIRE-4-THON Workspace
 
-Monorepo-style layout:
-- `frontend/`: Next.js landing page for HACK4THON (Tailwind, Framer Motion, Lucide). See `frontend/README.md` for details and scripts.
-- `backend/`: Placeholder for API/server code.
+Monorepo layout for the HIRE-4-THON site and future services.
+
+## Structure
+- `frontend/`: Next.js (App Router, TS, Tailwind, Framer Motion, Lucide) landing page. See [frontend/README.md](frontend/README.md) for details.
+- `backend/`: Placeholder for an API/server; not yet scaffolded.
 
 ## Frontend quickstart
 ```bash
@@ -10,6 +12,15 @@ cd frontend
 npm install
 npm run dev
 ```
+Open http://localhost:3000 after the dev server starts.
+
+## Deploy (frontend)
+```bash
+cd frontend
+npm run build
+npm run start
+```
+Deploy to Vercel or any Node host that supports Next.js.
 
 ## Backend
-Backend folder is empty; scaffold your preferred stack here (e.g., Node/Express, FastAPI, etc.).
+No code yet. When you scaffold it, add your stack (e.g., Express/FastAPI) and keep env secrets in `.env.local` (already gitignored via `.env*`).
