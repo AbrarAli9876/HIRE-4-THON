@@ -1,0 +1,202 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #05030d;
+  --surface: rgba(12, 10, 20, 0.88);
+  --card: rgba(18, 14, 26, 0.78);
+  --border: rgba(255, 255, 255, 0.08);
+  --glow-1: 0 0 80px rgba(255, 106, 0, 0.35);
+  --glow-2: 0 0 90px rgba(58, 0, 102, 0.45);
+  --accent: #ff6a00;
+  --accent-2: #3a0066;
+  --accent-3: #ff9a3c;
+  --accent-4: #b07bff;
+}
+
+@theme inline {
+  --color-background: var(--bg);
+  --color-foreground: #e2e8f0;
+  --font-sans: var(--font-sans);
+  --font-display: var(--font-display);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: radial-gradient(circle at 18% 18%, rgba(255, 106, 0, 0.12), transparent 32%),
+    radial-gradient(circle at 82% 8%, rgba(58, 0, 102, 0.18), transparent 32%),
+    radial-gradient(circle at 50% 82%, rgba(255, 154, 60, 0.12), transparent 30%),
+    #05030d;
+  color: #e6e7ec;
+  font-family: var(--font-sans), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  min-height: 100vh;
+}
+
+.animated-bg {
+  background: linear-gradient(120deg, #ff6a00, #3a0066, #000000);
+  background-size: 200% 200%;
+  animation: gradientShift 12s ease infinite;
+}
+
+::selection {
+  background: rgba(255, 106, 0, 0.3);
+  color: #fff7ed;
+}
+
+.glass {
+  background: var(--card);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(14px);
+  box-shadow: var(--glow-1);
+}
+
+.border-gradient {
+  position: relative;
+  overflow: hidden;
+}
+
+.border-gradient::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  background: conic-gradient(from 45deg, #ff6a00, #b07bff, #ff9a3c, #3a0066, #ff6a00);
+  filter: blur(16px);
+  opacity: 0.55;
+  z-index: 0;
+}
+
+.border-gradient > * {
+  position: relative;
+  z-index: 1;
+}
+
+.section {
+  padding: 5rem 0;
+}
+
+.text-gradient {
+  background: linear-gradient(120deg, #ff6a00, #ff9a3c, #ffd9a1, #b07bff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.card-hover {
+  transition: transform 180ms ease, box-shadow 200ms ease, border-color 200ms ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 106, 0, 0.7);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), var(--glow-2);
+}
+
+.grid-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: linear-gradient(rgba(148, 163, 184, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148, 163, 184, 0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+  mask-image: radial-gradient(circle at center, rgba(0, 0, 0, 0.55), transparent 70%);
+}
+
+.hover-glow {
+  transition: transform 240ms ease, box-shadow 260ms ease, border-color 200ms ease;
+}
+
+.hover-glow:hover {
+  transform: translateY(-6px) scale(1.01);
+  border-color: rgba(255, 106, 0, 0.7);
+  box-shadow: 0 20px 70px rgba(0, 0, 0, 0.45), 0 0 40px rgba(255, 106, 0, 0.35);
+}
+
+.particle {
+  position: absolute;
+  border-radius: 9999px;
+  opacity: 0.2;
+  filter: blur(1px);
+}
+
+.tech-grid {
+  background-image: linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 42px 42px;
+  mask-image: radial-gradient(circle at center, rgba(255, 255, 255, 0.12), transparent 65%);
+}
+
+.glow-blob {
+  position: absolute;
+  width: 340px;
+  height: 340px;
+  filter: blur(120px);
+  opacity: 0.7;
+  z-index: 0;
+}
+
+.glow-1 {
+  background: #ff6a00;
+  top: 8%;
+  left: 10%;
+}
+
+.glow-2 {
+  background: #3a0066;
+  bottom: 10%;
+  right: 12%;
+}
+
+.glow-3 {
+  background: #ff9a3c;
+  bottom: 20%;
+  left: 18%;
+}
+
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 100%;
+  z-index: 60;
+  background: linear-gradient(90deg, #ff6a00, #ff9a3c, #b07bff, #3a0066);
+  transform-origin: 0% 50%;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 11px;
+  font-weight: 700;
+  color: #ffcf99;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.9rem;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 3.5rem 0;
+  }
+}

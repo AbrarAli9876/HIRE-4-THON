@@ -1,0 +1,11 @@
+{
+  "eslint.workingDirectories": ["./frontend"],
+  "typescript.tsdk": "./frontend/node_modules/typescript/lib",
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+  "files.exclude": {
+    "**/node_modules": true,
+    "**/.next": true,
+    "frontend/.next": true,
+    "backend/.next": true
+  }
+}
