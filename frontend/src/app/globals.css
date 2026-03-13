@@ -52,37 +52,6 @@ body {
   box-shadow: var(--glow-1);
 }
 
-.border-gradient {
-  position: relative;
-  overflow: hidden;
-}
-
-.border-gradient::before {
-  content: "";
-  position: absolute;
-  inset: -2px;
-  background: conic-gradient(from 45deg, #ff6a00, #b07bff, #ff9a3c, #3a0066, #ff6a00);
-  filter: blur(16px);
-  opacity: 0.55;
-  z-index: 0;
-}
-
-.border-gradient > * {
-  position: relative;
-  z-index: 1;
-}
-
-.section {
-  padding: 5rem 0;
-}
-
-.text-gradient {
-  background: linear-gradient(120deg, #ff6a00, #ff9a3c, #ffd9a1, #b07bff);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
 .card-hover {
   transition: transform 180ms ease, box-shadow 200ms ease, border-color 200ms ease;
 }
@@ -113,18 +82,37 @@ body {
   box-shadow: 0 20px 70px rgba(0, 0, 0, 0.45), 0 0 40px rgba(255, 106, 0, 0.35);
 }
 
+.hero-shell {
+  background-size: cover;
+  background-position: center;
+}
+
+.hero-banner {
+  background-image: url('/hero-hire4thon.png');
+  background-size: cover;
+  background-position: center;
+}
+
+.hero-visual {
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.4);
+}
+
+.hero-grid {
+  background-image: linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(circle at center, rgba(255, 255, 255, 0.18), transparent 70%);
+}
+
+.hero-content {
+  max-width: 1200px;
+}
+
 .particle {
   position: absolute;
   border-radius: 9999px;
   opacity: 0.2;
   filter: blur(1px);
-}
-
-.tech-grid {
-  background-image: linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
-  background-size: 42px 42px;
-  mask-image: radial-gradient(circle at center, rgba(255, 255, 255, 0.12), transparent 65%);
 }
 
 .glow-blob {
@@ -195,8 +183,52 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+.hero-shell {
+  background-size: cover;
+  background-position: center;
+}
+
+.hero-visual {
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.4);
+}
+
+.hero-content {
+  max-width: 1200px;
+}
+
 @media (max-width: 768px) {
   .section {
     padding: 3.5rem 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-banner {
+    background-image: url('/hero-hire4thon-mobile.png');
+  }
+  .hero-content {
+    padding-top: 7rem;
+    padding-bottom: 3.5rem;
+    gap: 1.5rem;
+  }
+  .hero-visual {
+    opacity: 0.82;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .hero-banner {
+    background-image: url('/hero-hire4thon-mobile.png');
+  }
+  .hero-content {
+    padding-top: 7.5rem;
+    padding-bottom: 4rem;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1200px) {
+  .hero-content {
+    padding-top: 8rem;
+    padding-bottom: 4.5rem;
   }
 }

@@ -273,8 +273,7 @@ export default function Home() {
 
       <section
         id="home"
-        className="relative h-[65vh] w-full bg-cover bg-center bg-no-repeat sm:h-[72vh] md:h-[80vh] lg:h-screen"
-        style={{ backgroundImage: "url('/hero-hire4thon.png')" }}
+        className="hero-banner relative h-[65vh] w-full bg-cover bg-center bg-no-repeat sm:h-[72vh] md:h-[80vh] lg:h-screen"
       />
 
       <main className="relative mx-auto max-w-6xl px-4 pb-16 pt-6 sm:px-6 md:px-8 lg:px-6">
