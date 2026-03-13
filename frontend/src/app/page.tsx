@@ -21,7 +21,7 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import { motion, useScroll, useSpring } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 type TimelineItem = {
   label: string;
@@ -195,6 +195,31 @@ export default function Home() {
   const scaleX = useSpring(scrollYProgress, { stiffness: 180, damping: 28, mass: 0.25 });
   const [menuOpen, setMenuOpen] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+
+  useEffect(() => {
+    let ticking = false;
+
+    const restore = () => {
+      const saved = sessionStorage.getItem("scroll-pos");
+      if (saved) {
+        const top = parseFloat(saved);
+        requestAnimationFrame(() => window.scrollTo({ top, behavior: "auto" }));
+      }
+    };
+
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        sessionStorage.setItem("scroll-pos", String(window.scrollY));
+        ticking = false;
+      });
+    };
+
+    restore();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
     <div className="relative isolate min-h-screen overflow-hidden">
