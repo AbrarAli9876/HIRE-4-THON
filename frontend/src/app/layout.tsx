@@ -32,6 +32,11 @@ export const metadata: Metadata = {
     description:
       "Join HIRE-4-THON: 24-hour national hackathon at KSSEM with ₹4 LPA offer, internships, and prize pool.",
   },
+  icons: {
+    icon: "/abrar.svg",
+    shortcut: "/abrar.svg",
+    apple: "/abrar.svg",
+  },
   metadataBase: new URL("https://hire4thon.example.com"),
 };
 
