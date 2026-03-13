@@ -197,28 +197,36 @@ export default function Home() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   useEffect(() => {
-    let ticking = false;
+    if ("scrollRestoration" in history) {
+      history.scrollRestoration = "manual";
+    }
 
-    const restore = () => {
-      const saved = sessionStorage.getItem("scroll-pos");
-      if (saved) {
-        const top = parseFloat(saved);
-        requestAnimationFrame(() => window.scrollTo({ top, behavior: "auto" }));
-      }
-    };
-
-    const onScroll = () => {
-      if (ticking) return;
-      ticking = true;
+    const saved = sessionStorage.getItem("scroll-pos");
+    if (saved) {
+      const top = parseFloat(saved);
       requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          window.scrollTo({ top, left: 0, behavior: "auto" });
+        });
+      });
+    }
+
+    let rafId = 0;
+    const onScroll = () => {
+      cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(() => {
         sessionStorage.setItem("scroll-pos", String(window.scrollY));
-        ticking = false;
       });
     };
 
-    restore();
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      cancelAnimationFrame(rafId);
+      if ("scrollRestoration" in history) {
+        history.scrollRestoration = "auto";
+      }
+    };
   }, []);
 
   return (
@@ -301,7 +309,7 @@ export default function Home() {
         className="hero-banner relative h-[65vh] w-full bg-cover bg-center bg-no-repeat sm:h-[72vh] md:h-[80vh] lg:h-screen"
       />
 
-      <main className="relative mx-auto max-w-6xl px-4 pb-16 pt-6 sm:px-6 md:px-8 lg:px-6">
+      <main className="relative mx-auto mt-16 max-w-6xl px-4 pb-16 pt-6 sm:mt-24 sm:px-6 md:px-8 lg:mt-28 lg:px-6 space-y-28 sm:space-y-32">
 
 
         <section id="about" className="section">
