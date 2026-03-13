@@ -88,7 +88,7 @@ body {
 }
 
 .hero-banner {
-  background-image: url('/hero-hire4thon.png');
+  background-image: url('/hero-hire4thon-mobile.png');
   background-size: cover;
   background-position: center;
 }
@@ -203,9 +203,6 @@ body {
 }
 
 @media (max-width: 480px) {
-  .hero-banner {
-    background-image: url('/hero-hire4thon-mobile.png');
-  }
   .hero-content {
     padding-top: 7rem;
     padding-bottom: 3.5rem;
@@ -217,9 +214,6 @@ body {
 }
 
 @media (min-width: 481px) and (max-width: 768px) {
-  .hero-banner {
-    background-image: url('/hero-hire4thon-mobile.png');
-  }
   .hero-content {
     padding-top: 7.5rem;
     padding-bottom: 4rem;
@@ -230,5 +224,11 @@ body {
   .hero-content {
     padding-top: 8rem;
     padding-bottom: 4.5rem;
+  }
+}
+
+@media (min-width: 769px) {
+  .hero-banner {
+    background-image: url('/hero-hire4thon.png');
   }
 }
