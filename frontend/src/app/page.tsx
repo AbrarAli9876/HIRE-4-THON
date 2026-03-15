@@ -18,6 +18,7 @@ import {
   Sparkles,
   Trophy,
   Instagram,
+  FileText,
 } from "lucide-react";
 import Image from "next/image";
 import { motion, useScroll, useSpring } from "framer-motion";
@@ -229,6 +230,7 @@ export default function Home() {
     };
   }, []);
 
+
   return (
     <div className="relative isolate min-h-screen overflow-hidden">
       <motion.div className="scroll-progress" style={{ scaleX }} />
@@ -406,6 +408,18 @@ export default function Home() {
                       >
                         Open Registration Link
                       </a>
+                      <a
+                        href="/hire-4-thon-rules.pdf"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 bg-white/5 px-5 py-2.5 text-sm font-semibold text-orange-100 shadow-lg shadow-orange-500/10 transition hover:scale-[1.02]"
+                      >
+                        <FileText className="h-4 w-4" />
+                        Download Rules & Regulations (PDF)
+                      </a>
+                      <p className="text-xs text-slate-300">
+                        Please review the rules before registering; submissions imply agreement.
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -827,6 +841,7 @@ export default function Home() {
           </div>
         </div>
       </footer>
+
     </div>
   );
 }

@@ -33,9 +33,11 @@ export const metadata: Metadata = {
       "Join HIRE-4-THON: 24-hour national hackathon at KSSEM with ₹4 LPA offer, internships, and prize pool.",
   },
   icons: {
-    icon: "/abrar.svg",
-    shortcut: "/abrar.svg",
-    apple: "/abrar.svg",
+    icon: [
+      { url: "/hire4thon-favicon-3.png", type: "image/png", sizes: "any" },
+      { url: "/hire4thon-favicon-3.png", type: "image/png", rel: "shortcut icon" },
+    ],
+    apple: "/hire4thon-favicon-3.png",
   },
   metadataBase: new URL("https://hire4thon.example.com"),
 };
@@ -47,6 +49,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
+      <head>
+        <link rel="icon" href="/hire4thon-favicon-3.png" sizes="any" type="image/png" />
+        <link rel="shortcut icon" href="/hire4thon-favicon-3.png" type="image/png" />
+        <link rel="apple-touch-icon" href="/hire4thon-favicon-3.png" />
+      </head>
       <body
         className={`${spaceGrotesk.variable} ${inter.variable} antialiased bg-background text-slate-100`}
       >
